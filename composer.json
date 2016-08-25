@@ -1,7 +1,7 @@
 {
 	"name": "t20n/underscore",
 	"description": "A set of helper methods",
-	"type": "library",
+	"keywords": ["helpers", "laravel"],
 	"license": "MIT",
 	"authors": [
 		{
@@ -9,11 +9,21 @@
 			"email": "tonioriol@gmail.com"
 		}
 	],
-	"minimum-stability": "stable",
 	"require": {
+		"php": ">=5.4.0",
 		"illuminate/support": "^5.3"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "^5.5"
+	},
+	"autoload": {
+		"psr-4": {
+			"T20n\\Underscore\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Tests\\": "tests/"
+		}
 	}
 }
