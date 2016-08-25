@@ -1,7 +1,6 @@
-<?php namespace GOsnap\Tests\Unit;
+<?php
 
-use PHPUnit_Framework_TestCase;
-use T20n\Underscore\Underscore;
+use \T20n\Underscore\Underscore;
 
 class UnderscoreServiceTest extends PHPUnit_Framework_TestCase {
 
