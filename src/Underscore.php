@@ -52,20 +52,20 @@ class Underscore {
 	 * @return bool true on success, false on failure
 	 */
 	public function propExists($object, $properties) {
-		$properties = collect(explode('.', $properties));
-		$first      = $properties->first();
+		$properties = explode('.', $properties);
+		$first      = array_first($properties);
 
 		if (!array_key_exists($first, (array)$object)) {
 			return false;
 		}
 
-		if ($properties->count() == 1) {
+		if (count($properties) == 1) {
 			return array_key_exists($first, (array)$object);
 		}
 
-		$properties->shift();
+		array_shift($properties);
 
-		return $this->propExists($object->$first, $properties->implode('.'));
+		return $this->propExists($object->$first, implode('.', $properties));
 	}
 
 	/**
