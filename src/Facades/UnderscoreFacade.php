@@ -1,6 +1,4 @@
-<?php
-
-namespace T20n\Underscore\Facades;
+<?php namespace T20n\Underscore\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
