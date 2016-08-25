@@ -6,6 +6,6 @@ class UnderscoreFacade extends Facade {
 
 	protected static function getFacadeAccessor() {
 
-		return 'underscore';
+		return 'T20n\Underscore\Underscore';
 	}
 }

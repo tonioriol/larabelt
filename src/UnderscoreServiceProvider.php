@@ -27,6 +27,6 @@ class UnderscoreServiceProvider extends ServiceProvider {
 	 * @return void
 	 */
 	public function register() {
-		$this->app->singleton('underscore', Underscore::class);
+		$this->app->singleton('T20n\Underscore\Underscore', Underscore::class);
 	}
 }
