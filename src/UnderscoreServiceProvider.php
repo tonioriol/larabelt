@@ -5,6 +5,14 @@ namespace T20n\Underscore;
 use Illuminate\Support\ServiceProvider;
 
 class UnderscoreServiceProvider extends ServiceProvider {
+
+	/**
+	 * Indicates if loading of the provider is deferred.
+	 *
+	 * @var bool
+	 */
+	protected $defer = true;
+
 	/**
 	 * Bootstrap the application services.
 	 *
