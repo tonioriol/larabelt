@@ -4,7 +4,14 @@ use \T20n\Underscore\Underscore;
 
 class UnderscoreServiceTest extends PHPUnit_Framework_TestCase {
 
-	public function test_propExist_with_object_method() {
+	protected $underscore;
+
+	public function __construct($name = null, array $data = [], $dataName = '') {
+		$this->underscore = new Underscore();
+		parent::__construct($name, $data, $dataName);
+	}
+
+	public function test_propExist_method_with_object() {
 		$object = (object)[
 			'dot' => (object)[
 				'notated' => (object)[
@@ -13,16 +20,16 @@ class UnderscoreServiceTest extends PHPUnit_Framework_TestCase {
 			],
 		];
 
-		$this->assertTrue((new Underscore)->propExists($object, 'dot'));
-		$this->assertTrue((new Underscore)->propExists($object, 'dot.notated'));
-		$this->assertTrue((new Underscore)->propExists($object, 'dot.notated.string'));
+		$this->assertTrue($this->underscore->propExists($object, 'dot'));
+		$this->assertTrue($this->underscore->propExists($object, 'dot.notated'));
+		$this->assertTrue($this->underscore->propExists($object, 'dot.notated.string'));
 
-		$this->assertFalse((new Underscore)->propExists($object, 'no.notated.string'));
-		$this->assertFalse((new Underscore)->propExists($object, 'dot.string.notated'));
-		$this->assertFalse((new Underscore)->propExists($object, 'string.dot.notated'));
+		$this->assertFalse($this->underscore->propExists($object, 'no.notated.string'));
+		$this->assertFalse($this->underscore->propExists($object, 'dot.string.notated'));
+		$this->assertFalse($this->underscore->propExists($object, 'string.dot.notated'));
 	}
 
-	public function test_propExist_with_array_method() {
+	public function test_propExist_method_with_array() {
 		$object = [
 			'dot' => [
 				'notated' => [
@@ -31,16 +38,16 @@ class UnderscoreServiceTest extends PHPUnit_Framework_TestCase {
 			],
 		];
 
-		$this->assertTrue((new Underscore)->propExists($object, 'dot'));
-		$this->assertTrue((new Underscore)->propExists($object, 'dot.notated'));
-		$this->assertTrue((new Underscore)->propExists($object, 'dot.notated.string'));
+		$this->assertTrue($this->underscore->propExists($object, 'dot'));
+		$this->assertTrue($this->underscore->propExists($object, 'dot.notated'));
+		$this->assertTrue($this->underscore->propExists($object, 'dot.notated.string'));
 
-		$this->assertFalse((new Underscore)->propExists($object, 'no.notated.string'));
-		$this->assertFalse((new Underscore)->propExists($object, 'dot.string.notated'));
-		$this->assertFalse((new Underscore)->propExists($object, 'string.dot.notated'));
+		$this->assertFalse($this->underscore->propExists($object, 'no.notated.string'));
+		$this->assertFalse($this->underscore->propExists($object, 'dot.string.notated'));
+		$this->assertFalse($this->underscore->propExists($object, 'string.dot.notated'));
 	}
 
-	public function test_propExist_with_mixed_method() {
+	public function test_propExist_method_with_mixed() {
 		$object = [
 			'dot' => (object)[
 				'notated' => [
@@ -49,12 +56,42 @@ class UnderscoreServiceTest extends PHPUnit_Framework_TestCase {
 			],
 		];
 
-		$this->assertTrue((new Underscore)->propExists($object, 'dot'));
-		$this->assertTrue((new Underscore)->propExists($object, 'dot.notated'));
-		$this->assertTrue((new Underscore)->propExists($object, 'dot.notated.string'));
+		$this->assertTrue($this->underscore->propExists($object, 'dot'));
+		$this->assertTrue($this->underscore->propExists($object, 'dot.notated'));
+		$this->assertTrue($this->underscore->propExists($object, 'dot.notated.string'));
 
-		$this->assertFalse((new Underscore)->propExists($object, 'no.notated.string'));
-		$this->assertFalse((new Underscore)->propExists($object, 'dot.string.notated'));
-		$this->assertFalse((new Underscore)->propExists($object, 'string.dot.notated'));
+		$this->assertFalse($this->underscore->propExists($object, 'no.notated.string'));
+		$this->assertFalse($this->underscore->propExists($object, 'dot.string.notated'));
+		$this->assertFalse($this->underscore->propExists($object, 'string.dot.notated'));
+	}
+
+	public function test_addToQueryString_method_with_protocol_and_url() {
+		$url = 'http://test.app';
+
+		$this->assertEquals("$url?foo=bar", $this->underscore->addToQueryString($url, ['foo' => 'bar']));
+	}
+
+	public function test_addToQueryString_method_with_url() {
+		$url = 'test.app';
+
+		$this->assertEquals("$url?foo=bar", $this->underscore->addToQueryString($url, ['foo' => 'bar']));
+	}
+
+	public function test_addToQueryString_method_with_path() {
+		$url = 'foo/bar/baz';
+
+		$this->assertEquals("$url?foo=bar", $this->underscore->addToQueryString($url, ['foo' => 'bar']));
+	}
+
+	public function test_addToQueryString_method_with_empty() {
+		$url = '';
+
+		$this->assertEquals("$url?foo=bar", $this->underscore->addToQueryString($url, ['foo' => 'bar']));
+	}
+
+	public function test_addToQueryString_method_with_url_and_query() {
+		$url = 'http://foo.bar?baz=foo';
+
+		$this->assertEquals("$url&foo=bar", $this->underscore->addToQueryString($url, ['foo' => 'bar']));
 	}
 }
