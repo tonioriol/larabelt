@@ -3,6 +3,7 @@
 
 use DB;
 use Log;
+use stdClass;
 
 class Underscore {
 
@@ -44,10 +45,10 @@ class Underscore {
 	}
 
 	/**
-	 * Determines if a property exists in an object
+	 * Determines if a property exists in an object or an array or in a mix of nested arrays and objects
 	 *
-	 * @param \stdClass $object     the object to search in
-	 * @param string    $properties can be nested, with dot notation
+	 * @param stdClass|array $object     the object/array/mix to search in
+	 * @param string         $properties can be nested, with dot notation
 	 *
 	 * @return bool true on success, false on failure
 	 */
@@ -65,14 +66,14 @@ class Underscore {
 
 		array_shift($properties);
 
-		return $this->propExists($object->$first, implode('.', $properties));
+		return $this->propExists(is_array($object) ? $object[$first] : $object->$first, implode('.', $properties));
 	}
 
 	/**
 	 * Gets a property if exists in an object
 	 *
-	 * @param \stdClass $object     the object to search in
-	 * @param string    $properties can be nested, with dot notation
+	 * @param stdClass $object     the object to search in
+	 * @param string   $properties can be nested, with dot notation
 	 *
 	 * @return mixed object on success, false on failure
 	 */
