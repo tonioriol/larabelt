@@ -1,16 +1,15 @@
 <?php namespace T20n\Underscore;
 
-class Json {
+use InvalidArgumentException;
 
-	const ENCODE = 0;
-	const DECODE = 1;
+class Json {
 
 	public static function encode($value, $options = 0, $depth = 512) {
 
 		$value = json_encode($value, $options, $depth);
 
-		if (!static::isValid()) {
-			throw new \InvalidArgumentException(json_last_error_msg());
+		if (!static::is()) {
+			throw new InvalidArgumentException(static::getLastErrorMessage());
 		}
 
 		return $value;
@@ -20,31 +19,30 @@ class Json {
 
 		$value = json_decode($value, $assoc, $depth, $options);
 
-		if (!static::isValid()) {
-			throw new \InvalidArgumentException(json_last_error_msg());
+		if (!static::is()) {
+			throw new InvalidArgumentException(static::getLastErrorMessage());
 		}
 
 		return $value;
 	}
 
-	public static function isValid($value = null, $mode = 1) {
+	/**
+	 * Checks iif a string is a valid json.
+	 *
+	 * @param string $value
+	 *
+	 * @return bool true on success false on failure
+	 */
+	public static function is($value = null) {
 
 		if ($value) {
-			switch ($mode) {
-				case static::ENCODE:
-					json_encode($value);
-					break;
-				case static::DECODE:
-					json_decode($value);
-					break;
-				default:
-					return false;
-			}
+			json_encode($value);
 		}
 
 		return json_last_error() === JSON_ERROR_NONE;
 	}
 
+	public static function getLastErrorMessage() {
+		return json_last_error_msg();
+	}
 }
-
-Json::decode('{}');

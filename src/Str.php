@@ -73,11 +73,11 @@ class Str {
 	/**
 	 * Removes a substring from a given string.
 	 *
-	 * @param      $string  string The target string.
-	 * @param      $toStrip string The search string.
-	 * @param null $count
+	 * @param string   $string  The target string.
+	 * @param string   $toStrip The search string.
+	 * @param int|null $count
 	 *
-	 * @return mixed
+	 * @return string the string without the
 	 */
 	public static function strip($string, $toStrip, $count = null) {
 		return str_replace($toStrip, '', $string, $count);
