@@ -1,11 +1,11 @@
-<?php namespace T20n\Underscore;
+<?php namespace T20n\Larabelt;
 
 use stdClass;
 
 class Obj {
 
 	/**
-	 * Determines if a property exists in an object or an array or in a mix of nested arrays and objects
+	 * Determines if a property exists in an object/array/mix
 	 *
 	 * @param stdClass|array $object     the object/array/mix to search in
 	 * @param string         $properties can be nested, with dot notation
@@ -30,7 +30,7 @@ class Obj {
 	}
 
 	/**
-	 * Gets a property if exists in an object using a dot notated string
+	 * Gets a property if exists in an object/array/mix using a dot notated string
 	 *
 	 * @param stdClass|array $object     the object/array/mix to get from
 	 * @param string         $properties can be nested, with dot notation

@@ -1,30 +1,29 @@
-<?php namespace T20n\Underscore;
+<?php namespace T20n\Larabelt;
 
-use Log as LaravelLog;
+use Exception;
 
-class Log {
+class Log extends \Illuminate\Support\Facades\Log {
+
 	/**
 	 * print_r to logs
 	 *
-	 * @param string $level
 	 * @param string $message some text message.
 	 * @param        $var
-	 * @param array  $context
 	 */
-	public function r($level, $message, $var = null, $context = []) {
-		LaravelLog::write($level, $message . "\n" . print_r($var, true), $context);
+	public static function r($message, $var) {
+		static::debug($message . "\nPrint: " . print_r($var, true));
 	}
 
 	/**
 	 * Formats and logs an exception.
 	 *
-	 * @param \Exception $e
+	 * @param Exception $e
 	 *
 	 * @return string
 	 */
-	public function logException(\Exception $e) {
+	public static function exception(Exception $e) {
 		$message = get_class($e) . ' "' . $e->getMessage() . '" on: "' . $e->getFile() . ':' . $e->getLine() . '".';
-		LaravelLog::error($message, $e->getTrace());
+		static::error($message, $e->getTrace());
 
 		return $message;
 	}

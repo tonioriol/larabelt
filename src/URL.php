@@ -1,7 +1,7 @@
-<?php namespace T20n\Underscore;
+<?php namespace T20n\Larabelt;
 
 
-class Url {
+class URL extends \Illuminate\Support\Facades\URL {
 	/**
 	 * Adds (?) or appends (&) query string parameters to the given url/path
 	 *

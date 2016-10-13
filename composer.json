@@ -1,6 +1,6 @@
 {
-	"name": "t20n/underscore",
-	"description": "A set of helper methods",
+	"name": "t20n/larabelt",
+	"description": "A set of helper methods for laravel",
 	"keywords": ["helpers", "laravel"],
 	"license": "MIT",
 	"authors": [
@@ -18,7 +18,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"T20n\\Underscore\\": "src/"
+			"T20n\\Larabelt\\": "src/"
 		}
 	},
 	"autoload-dev": {

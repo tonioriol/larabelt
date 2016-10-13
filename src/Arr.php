@@ -1,7 +1,7 @@
-<?php namespace T20n\Underscore;
+<?php namespace T20n\Larabelt;
 
 
-class Arr {
+class Arr extends \Illuminate\Support\Arr {
 	/**
 	 * Checks if only the given keys are present in the given array.
 	 *
@@ -10,7 +10,7 @@ class Arr {
 	 *
 	 * @return bool
 	 */
-	public function arrayHasOnly(array $array, $keys) {
+	public static function hasOnly(array $array, $keys) {
 
 		$keys = !is_array($keys) ? is_string($keys) ? [$keys] : [] : $keys;
 
@@ -20,6 +20,6 @@ class Arr {
 			}
 		}
 
-		return count($array) == count($keys);
+		return count($array) === count($keys);
 	}
 }
