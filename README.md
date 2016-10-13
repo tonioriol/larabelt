@@ -12,7 +12,7 @@ Some classes of the package extend existing Laravel Facades such as `File` and `
 
 ## Install
 
-1. `composer require t20n/underscore`
+1. `composer require t20n/larabelt`
 2. For the classes that extend facades replace this from the `aliases` array in `config/app.php` of your laravel install:
 	- `'DB' => T20n\Underscore\DB::class,`
 	- `'File' => T20n\Underscore\File::class,`
