@@ -14,10 +14,10 @@ Some classes of the package extend existing Laravel Facades such as `File` and `
 
 1. `composer require t20n/larabelt`
 2. For the classes that extend facades replace this from the `aliases` array in `config/app.php` of your laravel install:
-	- `'DB' => T20n\Underscore\DB::class,`
-	- `'File' => T20n\Underscore\File::class,`
-	- `'Log' => T20n\Underscore\Log::class,`
-	- `'URL' => T20n\Underscore\URL::class,`
+	- `'DB' => T20n\Larabelt\DB::class,`
+	- `'File' => T20n\Larabelt\File::class,`
+	- `'Log' => T20n\Larabelt\Log::class,`
+	- `'URL' => T20n\Larabelt\URL::class,`
 
 ## Usage
 
