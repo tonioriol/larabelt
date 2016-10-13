@@ -22,7 +22,7 @@ class Num {
 	 *
 	 * @return int
 	 */
-	public function rand($digits) {
+	public static function rand($digits) {
 		--$digits;
 
 		return rand(pow(10, $digits), (pow(10, $digits) * 10) - 1);
