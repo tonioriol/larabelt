@@ -21,7 +21,4 @@ Some classes of the package extend existing Laravel Facades such as `File` and `
 
 ## Usage
 
-Here is the list of the helper classes:
-- `Arr`
-	It's the only
-	`Arr::hasOnly()`
+@todo
