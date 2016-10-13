@@ -1,6 +1,6 @@
 <?php
 
-use \T20n\Underscore\Obj;
+use T20n\Larabelt\Obj;
 
 class ObjTest extends PHPUnit_Framework_TestCase {
 
